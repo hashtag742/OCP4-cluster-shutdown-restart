@@ -1,4 +1,12 @@
 ---
+# Ansible playbook for OpenShift files transfer
+- name: Shutdown OpenShift Cluster 
+  hosts: all
+  remote_user: ec2-user
+  become: true
+  become_method: sudo
+  tasks: 
+---
 - name: Get Nodes
   shell:
     cmd: |
