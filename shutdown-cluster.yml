@@ -2,9 +2,6 @@
 - name: Get Nodes
   shell:
     cmd: |
-#        mkdir -p /root/.tmphc
-#        /usr/bin/cp /etc/origin/master/openshift-master.kubeconfig /root/.tmphc/kubeconfig
-#        export KUBECONFIG="/root/.tmphc/kubeconfig"
-        oc get nodes -o json > /root/.tmphc/all_nodes
+        oc get nodes -o json
     warn: False
   ignore_errors: yes
