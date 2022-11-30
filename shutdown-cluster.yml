@@ -10,6 +10,6 @@
   - name: Get Nodes
     shell:
       cmd: |
-         oc get nodes -o json > /home/ec2-user/aws_nodes
+         /usr/local/bin/oc get nodes -o json > /home/ec2-user/aws_nodes
       warn: False
     ignore_errors: yes
