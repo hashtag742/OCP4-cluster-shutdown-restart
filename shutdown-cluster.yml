@@ -4,9 +4,9 @@
     ansible_python_interpreter: /usr/bin/python3
     module: "shutdown-cluster"
     ansible_name_module: "Gracefully shutdown cluster | {{ module }}"
-  vars_files:
-    - 'vars/vault.yml'
-    - 'vars/global.yml'
+#  vars_files:
+#    - 'vars/vault.yml'
+#    - 'vars/global.yml'
 
   pre_tasks:
     - name: '{{ ansible_name_module }} | Validate Cron job variables'
