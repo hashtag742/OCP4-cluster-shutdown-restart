@@ -1,5 +1,5 @@
 ---
-# Ansible playbook for OpenShift files transfer
+# Ansible playbook for shuttting OpenShift Cluster
 - name: Shutdown OpenShift Cluster 
   hosts: all
   remote_user: ec2-user
