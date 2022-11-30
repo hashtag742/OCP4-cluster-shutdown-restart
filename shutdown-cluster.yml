@@ -32,17 +32,17 @@
 #              - cron_job_runtime_minute != '' 
 #            msg: " the cron_job_runtime_minute needs to be defined and valid minute for cron expression"
 
-    - name: '{{ ansible_name_module }} | {{ openshift_cli }} whoami | check if there is valid session'
-      command: >
-        {{ openshift_cli }} whoami
-      ignore_errors: yes
-      register: existing_session
+#    - name: '{{ ansible_name_module }} | {{ openshift_cli }} whoami | check if there is valid session'
+#      command: >
+#        {{ openshift_cli }} whoami
+#      ignore_errors: yes
+#      register: existing_session
 
-    - name: '{{ ansible_name_module }} | import_tasks | Conditional import of ocp-cluster-login role'
-      import_role:
-        name: ocp-cluster-login
-      when:
-        - existing_session.rc > 0
+#    - name: '{{ ansible_name_module }} | import_tasks | Conditional import of ocp-cluster-login role'
+#      import_role:
+#        name: ocp-cluster-login
+#      when:
+#        - existing_session.rc > 0
 
   tasks:
     - name: '{{ ansible_name_module }} | Get Certificate Expiration Date '
