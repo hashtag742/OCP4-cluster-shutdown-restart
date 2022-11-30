@@ -10,7 +10,7 @@
   - name: Get Nodes
     shell:
       cmd: |
-         export KUBECONFIG="/root/.tmphc/kubeconfig"
+         export KUBECONFIG="/home/ec2-user/openshift/ocp-aws-install/auth/kubeconfig"
          /usr/local/bin/oc get nodes -o json > /home/ec2-user/aws_nodes
       warn: False
     ignore_errors: yes
