@@ -44,29 +44,29 @@
 #      when:
 #        - existing_session.rc > 0
 
-  tasks:
-    - name: '{{ ansible_name_module }} | Get Certificate Expiration Date '
-      command: >
-        {{ openshift_cli }} get secret kube-apiserver-to-kubelet-signer \
-         -o jsonpath='{.metadata.annotations.auth\.openshift\.io/certificate-not-after}' \
-          -n openshift-kube-apiserver-operator
-      register: cert_expiration_date
+#  tasks:
+#    - name: '{{ ansible_name_module }} | Get Certificate Expiration Date '
+#      command: >
+#        {{ openshift_cli }} get secret kube-apiserver-to-kubelet-signer \
+#         -o jsonpath='{.metadata.annotations.auth\.openshift\.io/certificate-not-after}' \
+#          -n openshift-kube-apiserver-operator
+#      register: cert_expiration_date
 
-    - name: '{{ ansible_name_module }} | Print Certificate Expiration Date '
-      debug:
-        msg: "The Cluster certificate are due to expire on {{ cert_expiration_date.stdout }}. \n Ensure you restart the cluster by then"
+#    - name: '{{ ansible_name_module }} | Print Certificate Expiration Date '
+#      debug:
+#        msg: "The Cluster certificate are due to expire on {{ cert_expiration_date.stdout }}. \n Ensure you restart the cluster by then"
 
-    - name: '{{ ansible_name_module }} | Set Tomorrow Date fact'
-      set_fact:
-        tomorrow: "{{ lookup('pipe', ' date -d \"+ 1 days\" +%s') }}"
+#    - name: '{{ ansible_name_module }} | Set Tomorrow Date fact'
+#      set_fact:
+#        tomorrow: "{{ lookup('pipe', ' date -d \"+ 1 days\" +%s') }}"
 
-    - name: '{{ ansible_name_module }} | Set Expiration date epoch fact'
-      set_fact:
-        cert_exp_date_epoch: "{{ lookup('pipe', ' date -d \" {{ cert_expiration_date.stdout }} \"  +%s') }}"
-      when:
-        - cert_expiration_date.rc == 0
-        - cert_expiration_date.stdout is defined
-        - cert_expiration_date.stdout != ''
+#    - name: '{{ ansible_name_module }} | Set Expiration date epoch fact'
+#      set_fact:
+#        cert_exp_date_epoch: "{{ lookup('pipe', ' date -d \" {{ cert_expiration_date.stdout }} \"  +%s') }}"
+#      when:
+#        - cert_expiration_date.rc == 0
+#        - cert_expiration_date.stdout is defined
+#        - cert_expiration_date.stdout != ''
 
     - name: '{{ ansible_name_module }} | {{ openshift_cli }} get nodes '
       command: >
