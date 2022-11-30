@@ -11,6 +11,6 @@
     shell:
       cmd: |
          export KUBECONFIG="/home/ec2-user/openshift/ocp-aws-install/auth/kubeconfig"
-         /usr/local/bin/oc get nodes -o json > /home/ec2-user/aws_nodes
+         /usr/local/bin/oc get nodes -o jsonpath={.items[*].metadata.name} > /home/ec2-user/aws_nodes
       warn: False
     ignore_errors: yes
