@@ -38,11 +38,11 @@
       ignore_errors: yes
       register: existing_session
 
-#    - name: '{{ ansible_name_module }} | import_tasks | Conditional import of ocp-cluster-login role'
-#      import_role:
-#        name: ocp-cluster-login
-#      when:
-#        - existing_session.rc > 0
+    - name: '{{ ansible_name_module }} | import_tasks | Conditional import of ocp-cluster-login role'
+      import_role:
+        name: ocp-cluster-login
+      when:
+        - existing_session.rc > 0
 
   tasks:
     - name: '{{ ansible_name_module }} | Get Certificate Expiration Date '
