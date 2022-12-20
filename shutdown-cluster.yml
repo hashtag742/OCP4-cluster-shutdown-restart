@@ -13,3 +13,5 @@
          /usr/local/bin/oc get nodes -o jsonpath={.items[*].metadata.name} > /home/ec2-user/aws_nodes
       warn: False
     ignore_errors: yes
+
+# TEST
